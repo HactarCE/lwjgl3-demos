@@ -43,7 +43,7 @@ import static org.lwjgl.system.MemoryUtil.*;
 
 /**
  * A little 3D space shooter.
- * 
+ *
  * @author Kai Burjack
  */
 public class SpaceGame {
@@ -267,19 +267,33 @@ public class SpaceGame {
         System.out.println("Press L.Ctrl/Spacebar to move down/up");
         System.out.println("Press A/D to strafe left/right");
         System.out.println("Press Q/E to roll left/right");
+        System.out.println("!!! ADDED BY HACTARCE FOR LIBINPUT TESTING !!! Press Z to 'disable' cursor (GLFW_CURSOR_DISABLED)");
+        System.out.println("!!! ADDED BY HACTARCE FOR LIBINPUT TESTING !!! Press X to 'hide' cursor (GLFW_CURSOR_HIDDEN)");
+        System.out.println("!!! ADDED BY HACTARCE FOR LIBINPUT TESTING !!! Press C to return cursor to 'normal' (GLFW_CURSOR_NORMAL)");
         System.out.println("Hold the left mouse button to shoot");
         System.out.println("Hold the right mouse button to rotate towards the mouse cursor");
         glfwSetKeyCallback(window, keyCallback = new GLFWKeyCallback() {
             public void invoke(long window, int key, int scancode, int action, int mods) {
-                if (key == GLFW_KEY_UNKNOWN) 
+                if (key == GLFW_KEY_UNKNOWN)
                     return;
                 if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE) {
                     glfwSetWindowShouldClose(window, true);
                 }
                 if (action == GLFW_PRESS || action == GLFW_REPEAT) {
                     keyDown[key] = true;
+                    if (key == GLFW_KEY_Z) {
+                        glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+                    }
+                    if (key == GLFW_KEY_X){
+                        glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+                    }
+                    if (key == GLFW_KEY_C){
+                        glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+                    }
                 } else {
                     keyDown[key] = false;
+                }
+                if (action == GLFW_PRESS && key == GLFW_KEY_A) {
                 }
             }
         });
