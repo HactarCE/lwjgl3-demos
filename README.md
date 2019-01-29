@@ -1,6 +1,6 @@
 # HactarCE Libinput bug reproduction demonstration
 
-1. Ensure you have the Java Development Kit installed (e.g. `jdk8-openjdk` in Arch repositories).
+1. Ensure you have the Maven installed (e.g. `maven` in Arch repositories).
 2. Clone this repository: `git clone https://github.com/HactarCE/lwjgl3-demos && cd lwjgl3-demos`
 2. Build the project: `mvn package`
 3. Run the game/demonstration: `java -jar target/lwjgl3-demos.jar`
